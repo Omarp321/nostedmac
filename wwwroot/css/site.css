@@ -1,0 +1,47 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.start-page h1 {
+    font-family: Robotto;
+    font-size: 4rem;
+    animation: pop-in 1s ease-out;
+}
+
+.start-page h4 {
+    font-size: 1.65em;
+    line-height: 1; /* Setter linjehøyden til 1, fjerner mellomrom mellom tekstlinjene */
+}
+
+
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
