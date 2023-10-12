@@ -1,30 +1,221 @@
-@model Nøsted.Models.Ordre
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Ordre detaljer:";
 }
+<h1>@ViewData["Title"]</h1>
 
-<h1>Details</h1>
+<p>Her er skjemaet over orderen din</p>
 
-<div>
-    <h4>Ordre</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrdreStatus)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrdreStatus)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrdreInformasjon)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrdreInformasjon)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.OrdreId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sjekkliste</title>
+    <style>
+        .avdeling {
+            margin-top: 20px;
+            border: 2px solid black;
+            padding: 10px;
+            position: relative;
+        }
+
+        .sjekkpunkt {
+            margin-bottom: 10px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .status {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .gronn {
+            background-color: green;
+            color: white;
+        }
+
+        .rod {
+            background-color: red;
+            color: white;
+        }
+
+        .gul {
+            background-color: yellow;
+            color: black;
+        }
+
+        .tomKnapp {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <label for="dato">Dato:</label>
+    <input type="date" id="dato" name="dato" required>
+    <br>
+    <br>
+
+    <label for="godkjentAv">Godkjent av:</label>
+    <input type="text" id="godkjentAv" name="godkjentAv" required>
+    <br>
+    <br>
+
+    <label for="utarbeidetAv">Utarbeidet av:</label>
+    <input type="text" id="utarbeidetAv" name="utarbeidetAv" required>
+    <br>
+    <br>
+
+    <div class="avdeling">
+        <div class="status"></div>
+        <h2>Avdeling 1</h2>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 1:</span>
+            <input type="radio" name="avd1sp1" value="OK">OK
+            <input type="radio" name="avd1sp1" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd1sp1" value="Defekt">Defekt
+        </div>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 2:</span>
+            <input type="radio" name="avd1sp2" value="OK">OK
+            <input type="radio" name="avd1sp2" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd1sp2" value="Defekt">Defekt
+        </div>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 3:</span>
+            <input type="radio" name="avd1sp3" value="OK">OK
+            <input type="radio" name="avd1sp3" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd1sp3" value="Defekt">Defekt
+        </div>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 4:</span>
+            <input type="radio" name="avd1sp4" value="OK">OK
+            <input type="radio" name="avd1sp4" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd1sp4" value="Defekt">Defekt
+        </div>
+        <button class="tomKnapp" onclick="tømAvdeling('avd1sp1', 'avd1sp2', 'avd1sp3', 'avd1sp4')">Tøm</button>
+    </div>
+
+    <div class="avdeling">
+        <div class="status"></div>
+        <h2>Avdeling 2</h2>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 1:</span>
+            <input type="radio" name="avd2sp1" value="OK">OK
+            <input type="radio" name="avd2sp1" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd2sp1" value="Defekt">Defekt
+        </div>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 2:</span>
+            <input type="radio" name="avd2sp2" value="OK">OK
+            <input type="radio" name="avd2sp2" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd2sp2" value="Defekt">Defekt
+        </div>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 3:</span>
+            <input type="radio" name="avd2sp3" value="OK">OK
+            <input type="radio" name="avd2sp3" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd2sp3" value="Defekt">Defekt
+        </div>
+        <div class="sjekkpunkt">
+            <span>Sjekkpunkt 4:</span>
+            <input type="radio" name="avd2sp4" value="OK">OK
+            <input type="radio" name="avd2sp4" value="Bør skiftes">Bør skiftes
+            <input type="radio" name="avd2sp4" value="Defekt">Defekt
+        </div>
+        <button class="tomKnapp" onclick="tømAvdeling('avd2sp1', 'avd2sp2', 'avd2sp3', 'avd2sp4')">Tøm</button>
+    </div>
+    <br />
+    <br />
+
+    <button onclick="lagreSkjema()">Lagre</button>
+
+    <script>
+        function tømAvdeling(sjekkpunkt1, sjekkpunkt2, sjekkpunkt3, sjekkpunkt4) {
+            document.querySelector(`input[name=${sjekkpunkt1}][value=OK]`).checked = false;
+            document.querySelector(`input[name=${sjekkpunkt2}][value=OK]`).checked = false;
+            document.querySelector(`input[name=${sjekkpunkt3}][value=OK]`).checked = false;
+            document.querySelector(`input[name=${sjekkpunkt4}][value=OK]`).checked = false;
+            oppdaterStatus();
+        }
+
+        // JavaScript-kode for å oppdatere statusboksen basert på sjekkpunktene
+        const avdelinger = document.querySelectorAll('.avdeling');
+        avdelinger.forEach(avdeling => {
+            const sjekkpunkter = avdeling.querySelectorAll('input[type="radio"]');
+            sjekkpunkter.forEach(sjekkpunkt => {
+                sjekkpunkt.addEventListener('change', oppdaterStatus);
+            });
+        });
+
+        function oppdaterStatus() {
+            avdelinger.forEach(avdeling => {
+                const sjekkpunkter = avdeling.querySelectorAll('input[type="radio"]');
+                const statusBoks = avdeling.querySelector('.status');
+                let alleOk = true;
+                let enBorSkiftes = false;
+                let enDefekt = false;
+                sjekkpunkter.forEach(sjekkpunkt => {
+                    if (sjekkpunkt.value === 'Bør skiftes' && sjekkpunkt.checked) {
+                        enBorSkiftes = true;
+                    } else if (sjekkpunkt.value === 'Defekt' && sjekkpunkt.checked) {
+                        enDefekt = true;
+                    } else if (sjekkpunkt.value !== 'OK' && sjekkpunkt.checked) {
+                        alleOk = false;
+                    }
+                });
+                if (enDefekt) {
+                    statusBoks.classList.remove('gronn', 'gul');
+                    statusBoks.classList.add('rod');
+                    statusBoks.textContent = 'X';
+                } else if (enBorSkiftes) {
+                    statusBoks.classList.remove('gronn', 'rod');
+                    statusBoks.classList.add('gul');
+                    statusBoks.textContent = '!';
+                } else if (alleOk) {
+                    statusBoks.classList.remove('rod', 'gul');
+                    statusBoks.classList.add('gronn');
+                    statusBoks.textContent = '✔';
+                } else {
+                    statusBoks.textContent = '';
+                }
+            });
+        }
+
+        function lagreSkjema() {
+            var dato = document.getElementById("dato").value;
+            var godkjentAv = document.getElementById("godkjentAv").value;
+            var utarbeidetAv = document.getElementById("utarbeidetAv").value;
+
+            // Du kan legge til din egen lagringslogikk her
+            console.log("Dato: " + dato);
+            console.log("Godkjent av: " + godkjentAv);
+            console.log("Utarbeidet av: " + utarbeidetAv);
+
+            // Eksempel: Send data til serveren via AJAX-forespørsel
+            // var xhr = new XMLHttpRequest();
+            // xhr.open("POST", "lagre-skjema.php", true);
+            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // xhr.onreadystatechange = function () {
+            //     if (xhr.readyState === 4 && xhr.status === 200) {
+            //         console.log(xhr.responseText);
+            //     }
+            // };
+            // var data = "dato=" + dato + "&godkjentAv=" + godkjentAv + "&utarbeidetAv=" + utarbeidetAv;
+            // xhr.send(data);
+        }
+    </script>
+</body>
+
+</html>
