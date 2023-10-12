@@ -1,24 +1,24 @@
 ﻿html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .start-page h1 {
@@ -28,8 +28,7 @@ body {
 }
 
 .start-page h4 {
-    font-size: 1.65em;
-    line-height: 1; /* Setter linjehøyden til 1, fjerner mellomrom mellom tekstlinjene */
+    font-size: 1.80em;
 }
 
 
@@ -44,4 +43,3 @@ body {
         transform: scale(1);
     }
 }
-
