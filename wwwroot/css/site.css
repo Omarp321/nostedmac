@@ -25,10 +25,12 @@ body {
     font-family: Robotto;
     font-size: 4rem;
     animation: pop-in 1s ease-out;
+    text-align: left;
 }
 
 .start-page h4 {
     font-size: 2rem;
+    text-align: left;
 }
 
 
@@ -51,4 +53,3 @@ body.start-page {
     background-attachment: fixed;
     /* Legg til eventuelle andre egenskaper du ønsker for bakgrunnsbildet */
 }
-
